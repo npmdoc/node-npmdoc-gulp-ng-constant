@@ -1,0 +1,416 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/guzart/gulp-ng-constant">gulp-ng-constant (v1.1.0)</a>
+</h1>
+<h4>Gulp plugin for dynamic generation of angular constant modules.</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.gulp-ng-constant">module gulp-ng-constant</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-ng-constant.gulp-ng-constant">
+            function <span class="apidocSignatureSpan"></span>gulp-ng-constant
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-ng-constant.getConstants">
+            function <span class="apidocSignatureSpan">gulp-ng-constant.</span>getConstants
+            <span class="apidocSignatureSpan">(data, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-ng-constant.getFilePath">
+            function <span class="apidocSignatureSpan">gulp-ng-constant.</span>getFilePath
+            <span class="apidocSignatureSpan">(filePath)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-ng-constant.toString">
+            function <span class="apidocSignatureSpan">gulp-ng-constant.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-ng-constant.wrap">
+            function <span class="apidocSignatureSpan">gulp-ng-constant.</span>wrap
+            <span class="apidocSignatureSpan">(input, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.gulp-ng-constant.getConstants">module gulp-ng-constant.getConstants</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-ng-constant.getConstants.getConstants">
+            function <span class="apidocSignatureSpan">gulp-ng-constant.</span>getConstants
+            <span class="apidocSignatureSpan">(data, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.gulp-ng-constant.getFilePath">module gulp-ng-constant.getFilePath</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-ng-constant.getFilePath.getFilePath">
+            function <span class="apidocSignatureSpan">gulp-ng-constant.</span>getFilePath
+            <span class="apidocSignatureSpan">(filePath)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.gulp-ng-constant.toString">module gulp-ng-constant.toString</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-ng-constant.toString.toString">
+            function <span class="apidocSignatureSpan">gulp-ng-constant.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.gulp-ng-constant.wrap">module gulp-ng-constant.wrap</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-ng-constant.wrap.wrap">
+            function <span class="apidocSignatureSpan">gulp-ng-constant.</span>wrap
+            <span class="apidocSignatureSpan">(input, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.gulp-ng-constant" id="apidoc.module.gulp-ng-constant">module gulp-ng-constant</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-ng-constant.gulp-ng-constant" id="apidoc.element.gulp-ng-constant.gulp-ng-constant">
+        function <span class="apidocSignatureSpan"></span>gulp-ng-constant
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ngConstantPlugin(opts) {
+
+  var options = _.merge({}, defaults, opts);
+  var template = options.template || readFile(options.templatePath);
+  var stream = through.obj(objectStream);
+
+  if (options.stream) {
+    stream.end(new gutil.File({ path: 'ngConstants.json' }));
+  }
+
+  return stream;
+
+  function objectStream(file, enc, cb) {
+    var _this = this;
+
+    if (file.isStream()) {
+      _this.emit('error', pluginError('Streaming not supported'));
+      return cb();
+    }
+
+    try {
+      var data = file.isNull() ? {} : yaml.safeLoad(file.contents);
+
+      // Create the module string
+      var result = _.template(template)({
+        moduleName: getModuleName(data, options, file),
+        deps:       getModuleDeps(data, options),
+        constants:  getConstants(data, options)
+      });
+
+      // Handle wrapping
+      if (!options.wrap) { options.wrap = data.wrap; }
+      result = wrap(result, options);
+
+      file.path = getFilePath(file.path);
+      file.contents = new Buffer(result);
+      _this.push(file);
+    } catch (err) {
+      err.fileName = file.path;
+      _this.emit('error', pluginError(err));
+    }
+
+    cb();
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-ng-constant.getConstants" id="apidoc.element.gulp-ng-constant.getConstants">
+        function <span class="apidocSignatureSpan">gulp-ng-constant.</span>getConstants
+        <span class="apidocSignatureSpan">(data, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getConstants(data, options) {
+  var opts = options || {};
+  if (typeof opts.constants === 'string') {
+    opts.constants = JSON.parse(opts.constants);
+  }
+
+  var dataCnst = data.constants || data;
+  var method = opts.merge ? 'merge' : 'extend';
+  var input = _[method]({}, dataCnst, opts.constants);
+  var constants =  _.map(input, function (value, name) {
+    return {
+      name: name,
+      value: stringify(value, opts.space)
+    };
+  });
+
+  return constants;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-ng-constant.getFilePath" id="apidoc.element.gulp-ng-constant.getFilePath">
+        function <span class="apidocSignatureSpan">gulp-ng-constant.</span>getFilePath
+        <span class="apidocSignatureSpan">(filePath)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getFilePath(filePath) {
+  return gutil.replaceExtension(filePath, '.js');
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-ng-constant.toString" id="apidoc.element.gulp-ng-constant.toString">
+        function <span class="apidocSignatureSpan">gulp-ng-constant.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-ng-constant.wrap" id="apidoc.element.gulp-ng-constant.wrap">
+        function <span class="apidocSignatureSpan">gulp-ng-constant.</span>wrap
+        <span class="apidocSignatureSpan">(input, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function wrap(input, options) {
+  var wrapper = options.wrap || '&lt;%= __ngModule %&gt;';
+  if (wrapper === true) {
+    if (!defaultWrapper) { defaultWrapper = readFile(DEFAULT_WRAP_PATH); }
+    wrapper = defaultWrapper;
+  } else if (wrapper === 'amd') {
+    if (!amdWrapper) { amdWrapper = readFile(AMD_WRAP_PATH); }
+    wrapper = amdWrapper;
+  } else if (wrapper === 'commonjs') {
+    if (!commonjsWrapper) { commonjsWrapper = readFile(COMMONJS_WRAP_PATH); }
+    wrapper = commonjsWrapper;
+  }
+  return _.template(wrapper)(_.merge({ '__ngModule': input }, options));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.gulp-ng-constant.getConstants" id="apidoc.module.gulp-ng-constant.getConstants">module gulp-ng-constant.getConstants</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-ng-constant.getConstants.getConstants" id="apidoc.element.gulp-ng-constant.getConstants.getConstants">
+        function <span class="apidocSignatureSpan">gulp-ng-constant.</span>getConstants
+        <span class="apidocSignatureSpan">(data, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getConstants(data, options) {
+  var opts = options || {};
+  if (typeof opts.constants === 'string') {
+    opts.constants = JSON.parse(opts.constants);
+  }
+
+  var dataCnst = data.constants || data;
+  var method = opts.merge ? 'merge' : 'extend';
+  var input = _[method]({}, dataCnst, opts.constants);
+  var constants =  _.map(input, function (value, name) {
+    return {
+      name: name,
+      value: stringify(value, opts.space)
+    };
+  });
+
+  return constants;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.gulp-ng-constant.getFilePath" id="apidoc.module.gulp-ng-constant.getFilePath">module gulp-ng-constant.getFilePath</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-ng-constant.getFilePath.getFilePath" id="apidoc.element.gulp-ng-constant.getFilePath.getFilePath">
+        function <span class="apidocSignatureSpan">gulp-ng-constant.</span>getFilePath
+        <span class="apidocSignatureSpan">(filePath)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getFilePath(filePath) {
+  return gutil.replaceExtension(filePath, '.js');
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.gulp-ng-constant.toString" id="apidoc.module.gulp-ng-constant.toString">module gulp-ng-constant.toString</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-ng-constant.toString.toString" id="apidoc.element.gulp-ng-constant.toString.toString">
+        function <span class="apidocSignatureSpan">gulp-ng-constant.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.gulp-ng-constant.wrap" id="apidoc.module.gulp-ng-constant.wrap">module gulp-ng-constant.wrap</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-ng-constant.wrap.wrap" id="apidoc.element.gulp-ng-constant.wrap.wrap">
+        function <span class="apidocSignatureSpan">gulp-ng-constant.</span>wrap
+        <span class="apidocSignatureSpan">(input, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function wrap(input, options) {
+  var wrapper = options.wrap || '&lt;%= __ngModule %&gt;';
+  if (wrapper === true) {
+    if (!defaultWrapper) { defaultWrapper = readFile(DEFAULT_WRAP_PATH); }
+    wrapper = defaultWrapper;
+  } else if (wrapper === 'amd') {
+    if (!amdWrapper) { amdWrapper = readFile(AMD_WRAP_PATH); }
+    wrapper = amdWrapper;
+  } else if (wrapper === 'commonjs') {
+    if (!commonjsWrapper) { commonjsWrapper = readFile(COMMONJS_WRAP_PATH); }
+    wrapper = commonjsWrapper;
+  }
+  return _.template(wrapper)(_.merge({ '__ngModule': input }, options));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
