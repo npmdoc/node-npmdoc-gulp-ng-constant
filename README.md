@@ -1,4 +1,7 @@
-# api documentation for  [gulp-ng-constant (v1.1.0)](https://github.com/guzart/gulp-ng-constant)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-ng-constant.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-ng-constant) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-ng-constant.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-ng-constant)
+# npmdoc-gulp-ng-constant
+
+#### api documentation for  [gulp-ng-constant (v1.1.0)](https://github.com/guzart/gulp-ng-constant)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-ng-constant.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-ng-constant) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-ng-constant.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-ng-constant)
+
 #### Gulp plugin for dynamic generation of angular constant modules.
 
 [![NPM](https://nodei.co/npm/gulp-ng-constant.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/gulp-ng-constant)
@@ -64,7 +67,8 @@
     "scripts": {
         "test": "node_modules/jasmine-node/bin/jasmine-node spec/gulpNgConstantSpec.js"
     },
-    "version": "1.1.0"
+    "version": "1.1.0",
+    "bin": {}
 }
 ```
 
